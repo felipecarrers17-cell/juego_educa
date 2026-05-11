@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego 1</title> 
+    <link rel="stylesheet" href="css/estilo_juego.css">
+
+</head>
+<body>
+
+    <h1>🎮 Bienvenido al Juego 1</h1>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego 1 - Aprende los números</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            background:linear-gradient(to right,#141e30,#243b55);
+            color:white;
+            text-align:center;
+        }
+
+        .contenedor{
+            padding:30px;
+        }
+
+        h1{
+            font-size:40px;
+        }
+
+        h2{
+            margin-bottom:30px;
+        }
+
+        .carta{
+            background:white;
+            color:black;
+            width:300px;
+            margin:auto;
+            padding:20px;
+            border-radius:20px;
+            box-shadow:0px 0px 15px rgba(0,0,0,0.4);
+        }
+
+        .carta img{
+            width:200px;
+            height:200px;
+            object-fit:contain;
+        }
+
+        .numero{
+            font-size:60px;
+            color:#ff0000;
+            margin-top:20px;
+            font-weight:bold;
+        }
+
+        button{
+            margin-top:25px;
+            padding:15px 25px;
+            border:none;
+            border-radius:10px;
+            background:#00bfff;
+            color:white;
+            font-size:20px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0099cc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1 id="saludo"></h1>
+
+        <h2>Aprendamos los números con Avengers 🦸</h2>
+
+        <div class="carta">
+
+            <img id="imagenObjeto"
+            src="https://i.imgur.com/JD7sKxM.png">
+
+            <div class="numero" id="numero">
+                1
+            </div>
+
+        </div>
+
+        <button onclick="siguienteNumero()">
+            Siguiente →
+        </button>
+
+    </div>
+
+    <script>
+
+        // DATOS USUARIO
+        let nombre = localStorage.getItem("nombreUsuario");
+
+        document.getElementById("saludo").innerText =
+        "Bienvenido " + nombre;
+
+        // ELEMENTOS DEL JUEGO
+        let objetos = [
+
+            {
+                numero:1,
+                imagen:"https://i.imgur.com/JD7sKxM.png",
+                nombre:"Martillo de Thor"
+            },
+
+            {
+                numero:2,
+                imagen:"https://i.imgur.com/3ZQ3Z6v.png",
+                nombre:"Escudos del Capitán América"
+            },
+
+            {
+                numero:3,
+                imagen:"https://i.imgur.com/u6d4M8G.png",
+                nombre:"Máscaras de Iron Man"
+            },
+
+            {
+                numero:4,
+                imagen:"https://i.imgur.com/7l0K9Yx.png",
+                nombre:"Gemas del infinito"
+            },
+
+            {
+                numero:5,
+                imagen:"https://i.imgur.com/JD7sKxM.png",
+                nombre:"Martillos mágicos"
+            }
+
+        ];
+
+        let posicion = 0;
+
+        function hablar(texto){
+
+            let mensaje =
+            new SpeechSynthesisUtterance(texto);
+
+            mensaje.lang = "es-ES";
+
+            speechSynthesis.speak(mensaje);
+        }
+
+        function siguienteNumero(){
+
+            posicion++;
+
+            if(posicion >= objetos.length){
+                posicion = 0;
+            }
+
+            document.getElementById("imagenObjeto").src =
+            objetos[posicion].imagen;
+
+            document.getElementById("numero").innerText =
+            objetos[posicion].numero;
+
+            hablar(
+                "Número " +
+                objetos[posicion].numero
+            );
+
+        }
+
+        // VOZ INICIAL
+        hablar("Bienvenido al juego de números");
+
+    </script>
+
+</body>
+</html>

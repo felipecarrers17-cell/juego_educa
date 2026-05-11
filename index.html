@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLATAFORMA EDUCATIVA</title>
+    <link rel="icon" href="img/img nav.webp" type="image/png">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <audio id="sonidoClick" src="sonidos/click.mp3" preload="auto"></audio>
+        
+        <!-- Imagen representativa -->
+        <img src="img/fondo.avif"Plataforma" width="150">
+
+        <h2>Bienvenido</h2>
+
+        <!-- Campo de texto -->
+        <input type="text" placeholder="Ingresa tu nombre" id="nombre"><br><br>
+
+        <p>Selecciona tu avatar:</p>
+
+        <!-- Avatares -->
+        <div class="avatars">
+            <img src="img/avatar1.png.avif" onclick="seleccionarAvatar(this)">
+            <img src="img/avatar2.png.jpg" onclick="seleccionarAvatar(this)">
+            <img src="img/avatar3.png.webp" onclick="seleccionarAvatar(this)">
+    
+        </div>
+
+        <br>
+
+        <!-- Botón -->
+        <button onclick="ingresar()">Ingresar</button>
+
+    </div>
+    <script src="js/script_login.js"></script>
+</body>
+</html>
