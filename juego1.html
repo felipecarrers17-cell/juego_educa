@@ -1,190 +1,356 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Juego 1</title> 
-    <link rel="stylesheet" href="css/estilo_juego.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Avengers Matemáticas</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    overflow:hidden;
+    text-align:center;
+    background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
+    color:white;
+}
+
+/* FONDO ANIMADO */
+
+.fondo{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.burbuja{
+    position:absolute;
+    bottom:-100px;
+    width:40px;
+    height:40px;
+    background:rgba(255,255,255,0.1);
+    border-radius:50%;
+    animation:subir 10s infinite;
+}
+
+@keyframes subir{
+
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-1200px);
+        opacity:0;
+    }
+
+}
+
+.contenedor{
+    padding-top:40px;
+}
+
+h1{
+    font-size:50px;
+}
+
+.carta{
+    background:white;
+    color:black;
+    width:340px;
+    margin:auto;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0px 0px 25px rgba(0,0,0,0.5);
+    animation:flotar 2s infinite alternate;
+}
+
+@keyframes flotar{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(-10px);
+    }
+
+}
+
+.carta img{
+    width:230px;
+    height:230px;
+    object-fit:contain;
+}
+
+.numero{
+    font-size:80px;
+    color:red;
+    font-weight:bold;
+}
+
+.nombreObjeto{
+    font-size:25px;
+    margin-top:10px;
+}
+
+button{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:15px;
+    background:#00bfff;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#0099cc;
+}
+
+/* EFECTO GANADOR */
+
+.ganador{
+    animation:ganador 0.8s;
+}
+
+@keyframes ganador{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.2);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+#resultado{
+    font-size:35px;
+    margin-top:20px;
+    height:50px;
+}
+
+.puntaje{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+</style>
 </head>
 <body>
 
-    <h1>🎮 Bienvenido al Juego 1</h1>
+<div class="fondo">
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Juego 1 - Aprende los números</title>
+    <div class="burbuja" style="left:10%; animation-duration:8s;"></div>
+    <div class="burbuja" style="left:30%; animation-duration:12s;"></div>
+    <div class="burbuja" style="left:50%; animation-duration:10s;"></div>
+    <div class="burbuja" style="left:70%; animation-duration:7s;"></div>
+    <div class="burbuja" style="left:90%; animation-duration:14s;"></div>
 
-    <style>
+</div>
 
-        body{
-            margin:0;
-            font-family:Arial;
-            background:linear-gradient(to right,#141e30,#243b55);
-            color:white;
-            text-align:center;
-        }
+<div class="contenedor">
 
-        .contenedor{
-            padding:30px;
-        }
+    <h1>🦸 Avengers Matemáticas</h1>
 
-        h1{
-            font-size:40px;
-        }
+    <div class="puntaje">
+        ⭐ Puntaje:
+        <span id="puntos">0</span>
+    </div>
 
-        h2{
-            margin-bottom:30px;
-        }
+    <div class="carta" id="carta">
 
-        .carta{
-            background:white;
-            color:black;
-            width:300px;
-            margin:auto;
-            padding:20px;
-            border-radius:20px;
-            box-shadow:0px 0px 15px rgba(0,0,0,0.4);
-        }
+        <img id="imagenObjeto"
+        src="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
-        .carta img{
-            width:200px;
-            height:200px;
-            object-fit:contain;
-        }
-
-        .numero{
-            font-size:60px;
-            color:#ff0000;
-            margin-top:20px;
-            font-weight:bold;
-        }
-
-        button{
-            margin-top:25px;
-            padding:15px 25px;
-            border:none;
-            border-radius:10px;
-            background:#00bfff;
-            color:white;
-            font-size:20px;
-            cursor:pointer;
-        }
-
-        button:hover{
-            background:#0099cc;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="contenedor">
-
-        <h1 id="saludo"></h1>
-
-        <h2>Aprendamos los números con Avengers 🦸</h2>
-
-        <div class="carta">
-
-            <img id="imagenObjeto"
-            src="https://i.imgur.com/JD7sKxM.png">
-
-            <div class="numero" id="numero">
-                1
-            </div>
-
+        <div class="numero" id="numero">
+            1
         </div>
 
-        <button onclick="siguienteNumero()">
-            Siguiente →
-        </button>
+        <div class="nombreObjeto" id="nombreObjeto">
+            1 Martillo de Thor
+        </div>
 
     </div>
 
-    <script>
+    <button onclick="escucharNumero()">
+        🎤 Decir número
+    </button>
 
-        // DATOS USUARIO
-        let nombre = localStorage.getItem("nombreUsuario");
+    <br>
 
-        document.getElementById("saludo").innerText =
-        "Bienvenido " + nombre;
+    <button onclick="siguienteNumero()">
+        ➡ Siguiente
+    </button>
 
-        // ELEMENTOS DEL JUEGO
-        let objetos = [
+    <div id="resultado"></div>
 
-            {
-                numero:1,
-                imagen:"https://i.imgur.com/JD7sKxM.png",
-                nombre:"Martillo de Thor"
-            },
+</div>
 
-            {
-                numero:2,
-                imagen:"https://i.imgur.com/3ZQ3Z6v.png",
-                nombre:"Escudos del Capitán América"
-            },
+<script>
 
-            {
-                numero:3,
-                imagen:"https://i.imgur.com/u6d4M8G.png",
-                nombre:"Máscaras de Iron Man"
-            },
+let objetos = [
 
-            {
-                numero:4,
-                imagen:"https://i.imgur.com/7l0K9Yx.png",
-                nombre:"Gemas del infinito"
-            },
+{
+    numero:"uno",
+    imagen:"https://cdn-icons-png.flaticon.com/512/616/616494.png",
+    nombre:"1 Martillo de Thor"
+},
 
-            {
-                numero:5,
-                imagen:"https://i.imgur.com/JD7sKxM.png",
-                nombre:"Martillos mágicos"
-            }
+{
+    numero:"dos",
+    imagen:"https://cdn-icons-png.flaticon.com/512/863/863684.png",
+    nombre:"2 Escudos"
+},
 
-        ];
+{
+    numero:"tres",
+    imagen:"https://cdn-icons-png.flaticon.com/512/4712/4712109.png",
+    nombre:"3 Máscaras"
+},
 
-        let posicion = 0;
+{
+    numero:"cuatro",
+    imagen:"https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
+    nombre:"4 Gemas"
+},
 
-        function hablar(texto){
+{
+    numero:"cinco",
+    imagen:"https://cdn-icons-png.flaticon.com/512/3081/3081559.png",
+    nombre:"5 Poderes"
+}
 
-            let mensaje =
-            new SpeechSynthesisUtterance(texto);
+];
 
-            mensaje.lang = "es-ES";
+let posicion = 0;
+let puntos = 0;
 
-            speechSynthesis.speak(mensaje);
-        }
+// HABLAR
 
-        function siguienteNumero(){
+function hablar(texto){
 
-            posicion++;
+    let mensaje =
+    new SpeechSynthesisUtterance(texto);
 
-            if(posicion >= objetos.length){
-                posicion = 0;
-            }
+    mensaje.lang = "es-ES";
 
-            document.getElementById("imagenObjeto").src =
-            objetos[posicion].imagen;
+    speechSynthesis.speak(mensaje);
+}
 
-            document.getElementById("numero").innerText =
-            objetos[posicion].numero;
+// CAMBIAR NIVEL
 
-            hablar(
-                "Número " +
-                objetos[posicion].numero
-            );
+function siguienteNumero(){
 
-        }
+    posicion++;
 
-        // VOZ INICIAL
-        hablar("Bienvenido al juego de números");
+    if(posicion >= objetos.length){
+        posicion = 0;
+    }
 
-    </script>
+    document.getElementById("imagenObjeto").src =
+    objetos[posicion].imagen;
+
+    document.getElementById("nombreObjeto").innerText =
+    objetos[posicion].nombre;
+
+    document.getElementById("numero").innerText =
+    posicion + 1;
+
+    document.getElementById("resultado").innerHTML =
+    "";
+
+}
+
+// ESCUCHAR VOZ
+
+function escucharNumero(){
+
+    const reconocimiento =
+    new webkitSpeechRecognition();
+
+    reconocimiento.lang = "es-ES";
+
+    reconocimiento.start();
+
+    hablar("Di el número");
+
+    reconocimiento.onresult = function(event){
+
+        let texto =
+        event.results[0][0].transcript.toLowerCase();
+
+        verificarRespuesta(texto);
+
+    };
+
+}
+
+// VERIFICAR
+
+function verificarRespuesta(texto){
+
+    let correcto =
+    objetos[posicion].numero;
+
+    if(texto.includes(correcto)){
+
+        puntos += 10;
+
+        document.getElementById("resultado").innerHTML =
+        "💥 Correcto Avenger 💥";
+
+        document.getElementById("carta")
+        .classList.add("ganador");
+
+        hablar("Muy bien");
+
+    }else{
+
+        puntos -= 5;
+
+        document.getElementById("resultado").innerHTML =
+        "❌ Intenta otra vez";
+
+        hablar("Intenta nuevamente");
+
+    }
+
+    document.getElementById("puntos").innerText =
+    puntos;
+
+    setTimeout(()=>{
+
+        document.getElementById("carta")
+        .classList.remove("ganador");
+
+    },800);
+
+}
+
+// INICIO
+
+hablar("Bienvenido a Avengers Matemáticas");
+
+</script>
 
 </body>
 </html>
