@@ -1,160 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Avengers Matemáticas</title>
+    <title>Avengers Matemáticas</title>
+    <link rel="stylesheet" href="css/estilo_juego.css">
 
-<style>
-
-body{
-    margin:0;
-    font-family:Arial;
-    overflow:hidden;
-    text-align:center;
-    background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
-    color:white;
-}
-
-/* FONDO ANIMADO */
-
-.fondo{
-    position:fixed;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    z-index:-1;
-}
-
-.burbuja{
-    position:absolute;
-    bottom:-100px;
-    width:40px;
-    height:40px;
-    background:rgba(255,255,255,0.1);
-    border-radius:50%;
-    animation:subir 10s infinite;
-}
-
-@keyframes subir{
-
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-1200px);
-        opacity:0;
-    }
-
-}
-
-.contenedor{
-    padding-top:40px;
-}
-
-h1{
-    font-size:50px;
-}
-
-.carta{
-    background:white;
-    color:black;
-    width:340px;
-    margin:auto;
-    padding:25px;
-    border-radius:25px;
-    box-shadow:0px 0px 25px rgba(0,0,0,0.5);
-    animation:flotar 2s infinite alternate;
-}
-
-@keyframes flotar{
-
-    from{
-        transform:translateY(0px);
-    }
-
-    to{
-        transform:translateY(-10px);
-    }
-
-}
-
-.carta img{
-    width:230px;
-    height:230px;
-    object-fit:contain;
-}
-
-.numero{
-    font-size:80px;
-    color:red;
-    font-weight:bold;
-}
-
-.nombreObjeto{
-    font-size:25px;
-    margin-top:10px;
-}
-
-button{
-    margin-top:20px;
-    padding:15px 30px;
-    border:none;
-    border-radius:15px;
-    background:#00bfff;
-    color:white;
-    font-size:22px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.1);
-    background:#0099cc;
-}
-
-/* EFECTO GANADOR */
-
-.ganador{
-    animation:ganador 0.8s;
-}
-
-@keyframes ganador{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.2);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
-}
-
-#resultado{
-    font-size:35px;
-    margin-top:20px;
-    height:50px;
-}
-
-.puntaje{
-    font-size:28px;
-    margin-bottom:20px;
-}
-
-</style>
-</head>
+    <style></style>
+    </head>
 <body>
 
 <div class="fondo">
@@ -169,10 +23,10 @@ button:hover{
 
 <div class="contenedor">
 
-    <h1>🦸 Avengers Matemáticas</h1>
+    <h1>APRENDAMOS A CONTAR DEL 1 AL  5</h1>
 
     <div class="puntaje">
-        ⭐ Puntaje:
+        ⭐ correcto: 
         <span id="puntos">0</span>
     </div>
 
@@ -196,6 +50,19 @@ button:hover{
     </button>
 
     <br>
+        <button onclick="siguienteNumero()">
+        ➡ Siguiente
+    </button>
+
+    <br><br>
+
+    <button id="btnAprenderMas" 
+    onclick="irANuevaPagina()" 
+    style="display:none;">
+        🚀 Sigamos aprendiendo del 5 al 10
+    </button>
+
+<div id="resultado"></div>
 
     <button onclick="siguienteNumero()">
         ➡ Siguiente
@@ -204,153 +71,16 @@ button:hover{
     <div id="resultado"></div>
 
 </div>
+    <div id="felicitacion" class="felicitacion"></div>
 
-<script>
+    <canvas id="confetti"></canvas>
 
-let objetos = [
+    <audio id="audioLogro">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3" type="audio/mpeg">
+    </audio>
 
-{
-    numero:"uno",
-    imagen:"https://cdn-icons-png.flaticon.com/512/616/616494.png",
-    nombre:"1 Martillo de Thor"
-},
-
-{
-    numero:"dos",
-    imagen:"https://cdn-icons-png.flaticon.com/512/863/863684.png",
-    nombre:"2 Escudos"
-},
-
-{
-    numero:"tres",
-    imagen:"https://cdn-icons-png.flaticon.com/512/4712/4712109.png",
-    nombre:"3 Máscaras"
-},
-
-{
-    numero:"cuatro",
-    imagen:"https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
-    nombre:"4 Gemas"
-},
-
-{
-    numero:"cinco",
-    imagen:"https://cdn-icons-png.flaticon.com/512/3081/3081559.png",
-    nombre:"5 Poderes"
-}
-
-];
-
-let posicion = 0;
-let puntos = 0;
-
-// HABLAR
-
-function hablar(texto){
-
-    let mensaje =
-    new SpeechSynthesisUtterance(texto);
-
-    mensaje.lang = "es-ES";
-
-    speechSynthesis.speak(mensaje);
-}
-
-// CAMBIAR NIVEL
-
-function siguienteNumero(){
-
-    posicion++;
-
-    if(posicion >= objetos.length){
-        posicion = 0;
-    }
-
-    document.getElementById("imagenObjeto").src =
-    objetos[posicion].imagen;
-
-    document.getElementById("nombreObjeto").innerText =
-    objetos[posicion].nombre;
-
-    document.getElementById("numero").innerText =
-    posicion + 1;
-
-    document.getElementById("resultado").innerHTML =
-    "";
-
-}
-
-// ESCUCHAR VOZ
-
-function escucharNumero(){
-
-    const reconocimiento =
-    new webkitSpeechRecognition();
-
-    reconocimiento.lang = "es-ES";
-
-    reconocimiento.start();
-
-    hablar("Di el número");
-
-    reconocimiento.onresult = function(event){
-
-        let texto =
-        event.results[0][0].transcript.toLowerCase();
-
-        verificarRespuesta(texto);
-
-    };
-
-}
-
-// VERIFICAR
-
-function verificarRespuesta(texto){
-
-    let correcto =
-    objetos[posicion].numero;
-
-    if(texto.includes(correcto)){
-
-        puntos += 10;
-
-        document.getElementById("resultado").innerHTML =
-        "💥 Correcto Avenger 💥";
-
-        document.getElementById("carta")
-        .classList.add("ganador");
-
-        hablar("Muy bien");
-
-    }else{
-
-        puntos -= 5;
-
-        document.getElementById("resultado").innerHTML =
-        "❌ Intenta otra vez";
-
-        hablar("Intenta nuevamente");
-
-    }
-
-    document.getElementById("puntos").innerText =
-    puntos;
-
-    setTimeout(()=>{
-
-        document.getElementById("carta")
-        .classList.remove("ganador");
-
-    },800);
-
-}
-
-// INICIO
-
-hablar("Bienvenido a Avengers Matemáticas");
-
-</script>
+<script src="js/script_juego.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </body>
 </html>

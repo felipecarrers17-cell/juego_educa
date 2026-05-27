@@ -45,8 +45,8 @@ function ingresar() {
     hablar("Bienvenido " + nombre);
 
     setTimeout(() => {
-                window.location.href = "bienvenida.html";
-            }, 1000);
+        window.location.href = "bienvenida.html";
+    }, 1000);
 }
 
 // Carga inicial

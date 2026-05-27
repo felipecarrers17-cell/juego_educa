@@ -1,4 +1,4 @@
-  // Obtener datos guardados
+// Obtener datos guardados
         let nombre = localStorage.getItem("nombreUsuario");
         let avatar = localStorage.getItem("avatarUsuario");
 
@@ -9,7 +9,8 @@
         // Mostrar avatar
         document.getElementById("avatar").src = avatar;
 
-        // Ir al juego 1
-        function irJuego1(){
-            window.location.href = "juego1.html";
+        function irJuego1() {
+            alert("Entrando al juego");
+            window.location.href = "./juego1.html";
         }
+        
