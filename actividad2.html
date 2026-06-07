@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2 - Arrastra y Aprende</title>
-    <link rel="stylesheet" href="css/estilo_actividad2.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego 1 - Número Mayor</title>
+<link rel="stylesheet" href="css/estilo_juego.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
-
-
 <body>
 
-    <h1> APLIQUEMOS LO APRENDIDO</h1>
-    <p>Arrastra cada dibujo al número correcto</p>
+<div class="contenedor">
 
-    <div class="zona-numeros">
-        <div class="objetivo" data-cantidad="1">1</div>
-        <div class="objetivo" data-cantidad="2">2</div>
-        <div class="objetivo" data-cantidad="3">3</div>
-        <div class="objetivo" data-cantidad="4">4</div>
-        <div class="objetivo" data-cantidad="5">5</div>
-    </div>
+<h1>🎮 Juego 1</h1>
 
-    <div class="objetos">
-        <div class="item" draggable="true" data-cantidad="1">🔨</div>
-        <div class="item" draggable="true" data-cantidad="2">⚽⚽</div>
-        <div class="item" draggable="true" data-cantidad="3">🍎🍎🍎</div>
-        <div class="item" draggable="true" data-cantidad="4">🚗🚗🚗🚗</div>
-        <div class="item" draggable="true" data-cantidad="5">⭐⭐⭐⭐⭐</div>
-    </div>
+<h2>Arrastra el número MAYOR al cofre</h2>
 
-    <p id="mensaje"></p>
-    <div class="panel-puntaje">
+<div class="numeros">
 
-    <div class="caja-puntaje">
-        ⭐ Puntos:
-        <span id="puntos">0</span>
-    </div>
+<div class="numero"
+draggable="true"
+id="3250"
+ondragstart="drag(event)"
+onclick="leerNumero('tres mil doscientos cincuenta')">
+3250
+</div>
 
-    <div class="caja-puntaje">
-        ✅ Correctos:
-        <span id="correctosTexto">0</span>
-    </div>
-
-    <div class="caja-puntaje">
-        ❌ Errores:
-        <span id="erroresTexto">0</span>
-    </div>
+<div class="numero"
+draggable="true"
+id="4521"
+ondragstart="drag(event)"
+onclick="leerNumero('cuatro mil quinientos veintiuno')">
+4521
+</div>
 
 </div>
 
+<div class="zona"
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
+🏆 MAYOR
+</div>
 
-    <script src="js/script_actividad2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<div id="mensaje"></div>
+
+<br>
+
+<button id="siguiente"
+onclick="window.location.href='juego2.html'">
+➡️ Siguiente Nivel
+</button>
+
+</div>
+<script src="js/script_juego.js"></script>
+
 
 </body>
 </html>
