@@ -1,89 +1,152 @@
-et puntaje =
-parseInt(localStorage.getItem("puntaje")) || 0;
-
-function hablar(texto){
-
-speechSynthesis.cancel();
-
-let voz =
-new SpeechSynthesisUtterance(texto);
-
-voz.lang = "es-ES";
-
-speechSynthesis.speak(voz);
-
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-function leerNumero(numero){
-
-hablar(numero);
-
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(to bottom,#87CEEB,#E3F2FD);
+text-align:center;
+min-height:100vh;
+padding:20px;
 }
 
-function allowDrop(ev){
-
-ev.preventDefault();
-
+.contenedor{
+max-width:1000px;
+margin:auto;
 }
 
-function drag(ev){
-
-ev.dataTransfer.setData("text",
-ev.target.id);
-
+h1{
+color:#ff5722;
+margin-bottom:15px;
+animation:rebote 1.5s infinite;
 }
 
-function drop(ev){
+@keyframes rebote{
 
-ev.preventDefault();
-
-let dato =
-ev.dataTransfer.getData("text");
-
-if(dato === "4521"){
-
-puntaje += 20;
-
-localStorage.setItem(
-"puntaje",
-puntaje
-);
-
-ev.target.innerHTML =
-"🏆 4521";
-
-document.getElementById("mensaje")
-.innerHTML =
-"🎉 ¡Correcto! Encontraste el número mayor.";
-
-document.getElementById("mensaje")
-.style.color = "green";
-
-hablar("Muy bien");
-
-confetti({
-particleCount:200,
-spread:120
-});
-
-document.getElementById("siguiente")
-.style.display = "inline-block";
-
-}else{
-
-document.getElementById("mensaje")
-.innerHTML =
-"❌ Inténtalo nuevamente.";
-
-document.getElementById("mensaje")
-.style.color = "red";
-
-hablar("Inténtalo nuevamente");
-
+50%{
+transform:translateY(-8px);
 }
 
 }
 
-hablar(
-"Arrastra el número mayor al cofre"
-);
+.avatar{
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+
+border:5px solid gold;
+
+object-fit:cover;
+
+margin-bottom:10px;
+
+}
+
+#nombre{
+
+color:#333;
+margin-bottom:20px;
+
+}
+
+.tarjeta{
+
+background:white;
+
+padding:30px;
+
+border-radius:25px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+
+}
+
+.numero{
+
+display:inline-block;
+
+padding:20px 35px;
+
+margin:15px;
+
+background:#4FC3F7;
+
+color:white;
+
+font-size:40px;
+
+font-weight:bold;
+
+border-radius:20px;
+
+}
+
+.tabla{
+
+margin:auto;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+font-size:24px;
+
+}
+
+.tabla th,
+.tabla td{
+
+border:2px solid #333;
+
+padding:15px 20px;
+
+}
+
+.lista{
+
+font-size:24px;
+line-height:50px;
+
+}
+
+.flecha{
+
+font-size:35px;
+font-weight:bold;
+color:#4CAF50;
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:15px;
+
+background:#ff9800;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#f57c00;
+
+}
