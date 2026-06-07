@@ -1,86 +1,232 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Avengers Matemáticas</title>
-    <link rel="stylesheet" href="css/estilo_juego.css">
+<title>Juego 1 - Número Mayor</title>
 
-    <style></style>
-    </head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    text-align:center;
+    background:linear-gradient(to bottom,#87CEEB,#ffffff);
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    color:#ff5722;
+}
+
+h2{
+    color:#333;
+}
+
+.contenedor{
+    max-width:1000px;
+    margin:auto;
+}
+
+.numero{
+    width:180px;
+    height:120px;
+    background:#4fc3f7;
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:grab;
+    margin:20px;
+}
+
+.numeros{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.zona{
+    width:300px;
+    height:180px;
+    margin:30px auto;
+    border:4px dashed #ff9800;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    background:#fff3e0;
+}
+
+#mensaje{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:15px;
+    background:#4CAF50;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+</style>
+</head>
 <body>
-
-<div class="fondo">
-
-    <div class="burbuja" style="left:10%; animation-duration:8s;"></div>
-    <div class="burbuja" style="left:30%; animation-duration:12s;"></div>
-    <div class="burbuja" style="left:50%; animation-duration:10s;"></div>
-    <div class="burbuja" style="left:70%; animation-duration:7s;"></div>
-    <div class="burbuja" style="left:90%; animation-duration:14s;"></div>
-
-</div>
 
 <div class="contenedor">
 
-    <h1>APRENDAMOS A CONTAR DEL 1 AL  5</h1>
+<h1>🎮 Juego 1</h1>
 
-    <div class="puntaje">
-        ⭐ correcto: 
-        <span id="puntos">0</span>
-    </div>
+<h2>Arrastra el número MAYOR al cofre</h2>
 
-    <div class="carta" id="carta">
+<div class="numeros">
 
-        <img id="imagenObjeto"
-        src="https://cdn-icons-png.flaticon.com/512/616/616494.png">
+<div class="numero"
+draggable="true"
+id="3250"
+ondragstart="drag(event)"
+onclick="leerNumero('tres mil doscientos cincuenta')">
+3250
+</div>
 
-        <div class="numero" id="numero">
-            1
-        </div>
-
-        <div class="nombreObjeto" id="nombreObjeto">
-            1 Martillo de Thor
-        </div>
-
-    </div>
-
-    <button onclick="escucharNumero()">
-        🎤 Decir número
-    </button>
-
-    <br>
-        <button onclick="siguienteNumero()">
-        ➡ Siguiente
-    </button>
-
-    <br><br>
-
-    <button id="btnAprenderMas" 
-    onclick="irANuevaPagina()" 
-    style="display:none;">
-        🚀 Sigamos aprendiendo del 5 al 10
-    </button>
-
-<div id="resultado"></div>
-
-    <button onclick="siguienteNumero()">
-        ➡ Siguiente
-    </button>
-
-    <div id="resultado"></div>
+<div class="numero"
+draggable="true"
+id="4521"
+ondragstart="drag(event)"
+onclick="leerNumero('cuatro mil quinientos veintiuno')">
+4521
+</div>
 
 </div>
-    <div id="felicitacion" class="felicitacion"></div>
 
-    <canvas id="confetti"></canvas>
+<div class="zona"
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
+🏆 MAYOR
+</div>
 
-    <audio id="audioLogro">
-        <source src="https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3" type="audio/mpeg">
-    </audio>
+<div id="mensaje"></div>
 
-<script src="js/script_juego.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<br>
+
+<button id="siguiente"
+onclick="window.location.href='juego2.html'">
+➡️ Siguiente Nivel
+</button>
+
+</div>
+
+<script>
+
+let puntaje =
+parseInt(localStorage.getItem("puntaje")) || 0;
+
+function hablar(texto){
+
+speechSynthesis.cancel();
+
+let voz =
+new SpeechSynthesisUtterance(texto);
+
+voz.lang = "es-ES";
+
+speechSynthesis.speak(voz);
+
+}
+
+function leerNumero(numero){
+
+hablar(numero);
+
+}
+
+function allowDrop(ev){
+
+ev.preventDefault();
+
+}
+
+function drag(ev){
+
+ev.dataTransfer.setData("text",
+ev.target.id);
+
+}
+
+function drop(ev){
+
+ev.preventDefault();
+
+let dato =
+ev.dataTransfer.getData("text");
+
+if(dato === "4521"){
+
+puntaje += 20;
+
+localStorage.setItem(
+"puntaje",
+puntaje
+);
+
+ev.target.innerHTML =
+"🏆 4521";
+
+document.getElementById("mensaje")
+.innerHTML =
+"🎉 ¡Correcto! Encontraste el número mayor.";
+
+document.getElementById("mensaje")
+.style.color = "green";
+
+hablar("Muy bien");
+
+confetti({
+particleCount:200,
+spread:120
+});
+
+document.getElementById("siguiente")
+.style.display = "inline-block";
+
+}else{
+
+document.getElementById("mensaje")
+.innerHTML =
+"❌ Inténtalo nuevamente.";
+
+document.getElementById("mensaje")
+.style.color = "red";
+
+hablar("Inténtalo nuevamente");
+
+}
+
+}
+
+hablar(
+"Arrastra el número mayor al cofre"
+);
+
+</script>
 
 </body>
 </html>
