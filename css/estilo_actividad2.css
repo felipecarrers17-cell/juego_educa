@@ -1,95 +1,41 @@
-body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(to bottom,#87CEEB,#E3F2FD);
-    text-align:center;
-    padding:20px;
-}
+#btnVerificar{
 
-h1{
-    color:#ff5722;
-}
+padding:15px 30px;
 
-.contenedor{
-    max-width:1000px;
-    margin:auto;
-}
+border:none;
 
-.numeros{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:30px;
-    flex-wrap:wrap;
-}
+border-radius:15px;
 
-.numero{
+background:#2196F3;
 
-    width:180px;
-    height:120px;
+color:white;
 
-    background:#4FC3F7;
+font-size:20px;
 
-    color:white;
+cursor:pointer;
 
-    font-size:40px;
-    font-weight:bold;
-
-    border-radius:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    cursor:grab;
-}
-
-.numero:hover{
-    transform:scale(1.05);
-}
-
-.zona{
-
-    width:320px;
-    height:180px;
-
-    border:4px dashed orange;
-
-    margin:40px auto;
-
-    border-radius:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:30px;
-
-    background:white;
-}
-
-#mensaje{
-
-    font-size:28px;
-    font-weight:bold;
-    margin-top:20px;
+margin-top:20px;
 
 }
 
 #btnSiguiente{
 
-    display:none;
+display:none;
 
-    padding:15px 30px;
+padding:15px 30px;
 
-    border:none;
+border:none;
 
-    border-radius:15px;
+border-radius:15px;
 
-    background:#4CAF50;
+background:#4CAF50;
 
-    color:white;
+color:white;
 
-    font-size:20px;
+font-size:20px;
 
-    cursor:pointer;
+cursor:pointer;
+
+margin-top:20px;
+
 }
