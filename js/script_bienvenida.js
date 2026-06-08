@@ -11,6 +11,6 @@
 
         function irJuego1() {
             alert("Entrando al juego");
-            window.location.href = "./juego1.html";
+            window.location.href = "./basico4.html";
         }
         
