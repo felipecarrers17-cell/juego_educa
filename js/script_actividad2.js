@@ -1,4 +1,5 @@
-let puntaje =
+alert("JS cargado correctamente")
+;let puntaje =
 parseInt(localStorage.getItem("puntaje")) || 0;
 
 // AUDIO
