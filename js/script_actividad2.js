@@ -1,88 +1,94 @@
-et puntaje =
+let puntaje =
 parseInt(localStorage.getItem("puntaje")) || 0;
+
+// AUDIO
 
 function hablar(texto){
 
-speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
-let voz =
-new SpeechSynthesisUtterance(texto);
+    let voz =
+    new SpeechSynthesisUtterance(texto);
 
-voz.lang = "es-ES";
+    voz.lang = "es-ES";
 
-speechSynthesis.speak(voz);
-
+    speechSynthesis.speak(voz);
 }
+
+// LEER NÚMERO
 
 function leerNumero(numero){
 
-hablar(numero);
-
+    hablar(numero);
 }
+
+// DRAG
 
 function allowDrop(ev){
 
-ev.preventDefault();
-
+    ev.preventDefault();
 }
 
 function drag(ev){
 
-ev.dataTransfer.setData("text",
-ev.target.id);
-
+    ev.dataTransfer.setData(
+        "text",
+        ev.target.id
+    );
 }
+
+// DROP
 
 function drop(ev){
 
-ev.preventDefault();
+    ev.preventDefault();
 
-let dato =
-ev.dataTransfer.getData("text");
+    let numero =
+    ev.dataTransfer.getData("text");
 
-if(dato === "4521"){
+    if(numero === "4521"){
 
-puntaje += 20;
+        puntaje += 20;
 
-localStorage.setItem(
-"puntaje",
-puntaje
-);
+        localStorage.setItem(
+            "puntaje",
+            puntaje
+        );
 
-ev.target.innerHTML =
-"🏆 4521";
+        document.getElementById("mensaje")
+        .innerHTML =
+        "🎉 ¡Correcto!";
 
-document.getElementById("mensaje")
-.innerHTML =
-"🎉 ¡Correcto! Encontraste el número mayor.";
+        document.getElementById("mensaje")
+        .style.color = "green";
 
-document.getElementById("mensaje")
-.style.color = "green";
+        hablar("Muy bien");
 
-hablar("Muy bien");
+        confetti({
+            particleCount:200,
+            spread:120
+        });
 
-confetti({
-particleCount:200,
-spread:120
-});
+        document.getElementById("btnSiguiente")
+        .style.display = "inline-block";
 
-document.getElementById("siguiente")
-.style.display = "inline-block";
+        ev.target.innerHTML =
+        "🏆 4521";
 
-}else{
+    }else{
 
-document.getElementById("mensaje")
-.innerHTML =
-"❌ Inténtalo nuevamente.";
+        document.getElementById("mensaje")
+        .innerHTML =
+        "❌ Inténtalo nuevamente";
 
-document.getElementById("mensaje")
-.style.color = "red";
+        document.getElementById("mensaje")
+        .style.color = "red";
 
-hablar("Inténtalo nuevamente");
-
+        hablar("Inténtalo nuevamente");
+    }
 }
 
-}
+// MENSAJE INICIAL
 
 hablar(
 "Arrastra el número mayor al cofre"
