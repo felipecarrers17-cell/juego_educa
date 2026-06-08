@@ -289,7 +289,7 @@ function leerTexto() {
 
 function irJuegos() {
 
-    window.location.href = "juego1.html";
+    window.location.href = "actividad2.html";
 }
 
 // ============================
