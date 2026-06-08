@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juego 5 - Comparar Números</title>
+
+<link rel="stylesheet" href="css/estilo_actividad6.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>🎮 JUEGO 5</h1>
+
+    <h3 id="puntaje">⭐ Puntaje: 0</h3>
+
+    <h2>Arrastra el símbolo correcto</h2>
+
+    <div class="comparacion">
+
+        <span>4521</span>
+
+        <div
+            class="zona"
+            id="respuesta"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)">
+            ?
+        </div>
+
+        <span>3250</span>
+
+    </div>
+
+    <div class="simbolos">
+
+        <div class="simbolo" id=">" draggable="true" ondragstart="drag(event)">
+            >
+        </div>
+
+        <div class="simbolo" id="<" draggable="true" ondragstart="drag(event)">
+            <
+        </div>
+
+        <div class="simbolo" id="=" draggable="true" ondragstart="drag(event)">
+            =
+        </div>
+
+    </div>
+
+    <div id="mensaje"></div>
+
+    <button id="btnVerificar" onclick="verificarRespuesta()">
+        ✅ Verificar Respuesta
+    </button>
+
+    <button id="btnFinal"
+            onclick="window.location.href='final.html'">
+        🏆 Ver Resultado Final
+    </button>
+
+</div>
+
+<script src="js/script_actividad6.js"></script>
+
+</body>
+</html>
