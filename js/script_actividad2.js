@@ -1,8 +1,20 @@
-alert("JS cargado correctamente")
-;let puntaje =
+// ======================
+// PUNTAJE
+// ======================
+
+let puntaje =
 parseInt(localStorage.getItem("puntaje")) || 0;
 
+let respuestaUsuario = "";
+
+// Mostrar puntaje
+
+document.getElementById("puntaje").innerHTML =
+"⭐ Puntaje: " + puntaje;
+
+// ======================
 // AUDIO
+// ======================
 
 function hablar(texto){
 
@@ -16,18 +28,24 @@ function hablar(texto){
     speechSynthesis.speak(voz);
 }
 
-// LEER NÚMERO
+// ======================
+// LEER NÚMEROS
+// ======================
 
 function leerNumero(numero){
 
     hablar(numero);
+
 }
 
-// DRAG
+// ======================
+// DRAG & DROP
+// ======================
 
 function allowDrop(ev){
 
     ev.preventDefault();
+
 }
 
 function drag(ev){
@@ -36,9 +54,9 @@ function drag(ev){
         "text",
         ev.target.id
     );
+
 }
 
-// DROP
 function drop(ev){
 
     ev.preventDefault();
@@ -49,17 +67,33 @@ function drop(ev){
     respuestaUsuario = numero;
 
     document.getElementById("zonaRespuesta")
-    .innerHTML = "🏆 " + numero;
+    .innerHTML =
+    "🏆 " + numero;
 
 }
-function drop(ev){
 
-    ev.preventDefault();
+// ======================
+// VERIFICAR RESPUESTA
+// ======================
 
-    let numero =
-    ev.dataTransfer.getData("text");
+function verificarRespuesta(){
 
-    if(numero === "4521"){
+    if(respuestaUsuario === ""){
+
+        hablar("Debes arrastrar un número");
+
+        document.getElementById("mensaje")
+        .innerHTML =
+        "⚠️ Primero arrastra un número.";
+
+        document.getElementById("mensaje")
+        .style.color = "orange";
+
+        return;
+
+    }
+
+    if(respuestaUsuario === "4521"){
 
         puntaje += 20;
 
@@ -68,9 +102,13 @@ function drop(ev){
             puntaje
         );
 
+        document.getElementById("puntaje")
+        .innerHTML =
+        "⭐ Puntaje: " + puntaje;
+
         document.getElementById("mensaje")
         .innerHTML =
-        "🎉 ¡Correcto!";
+        "🎉 ¡Correcto! Encontraste el número mayor.";
 
         document.getElementById("mensaje")
         .style.color = "green";
@@ -83,32 +121,44 @@ function drop(ev){
         });
 
         document.getElementById("btnSiguiente")
-        .style.display = "inline-block";
-
-        ev.target.innerHTML =
-        "🏆 4521";
+        .style.display =
+        "inline-block";
 
     }else{
 
         document.getElementById("mensaje")
         .innerHTML =
-        "❌ Inténtalo nuevamente";
+        "❌ Incorrecto. Inténtalo nuevamente.";
 
         document.getElementById("mensaje")
         .style.color = "red";
 
         hablar("Inténtalo nuevamente");
+
     }
+
 }
-puntaje += 20;
 
-localStorage.setItem("puntaje", puntaje);
-
-document.getElementById("puntaje").innerHTML =
-"⭐ Puntaje: " + puntaje;
-
+// ======================
 // MENSAJE INICIAL
+// ======================
 
-hablar(
-"Arrastra el número mayor al cofre"
-);
+window.onload = function(){
+
+    document.body.addEventListener(
+        "click",
+        function iniciarAudio(){
+
+            hablar(
+            "Arrastra el número mayor al cofre y luego presiona verificar respuesta"
+            );
+
+            document.body.removeEventListener(
+                "click",
+                iniciarAudio
+            );
+
+        }
+    );
+
+};
