@@ -39,7 +39,19 @@ function drag(ev){
 }
 
 // DROP
+function drop(ev){
 
+    ev.preventDefault();
+
+    let numero =
+    ev.dataTransfer.getData("text");
+
+    respuestaUsuario = numero;
+
+    document.getElementById("zonaRespuesta")
+    .innerHTML = "🏆 " + numero;
+
+}
 function drop(ev){
 
     ev.preventDefault();
