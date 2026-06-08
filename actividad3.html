@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juego 2 - Número Menor</title>
+
+<link rel="stylesheet" href="css/estilo_actividad2.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>🎮 JUEGO 2</h1>
+
+    <h3 id="puntaje">⭐ Puntaje: 0</h3>
+
+    <h2>Arrastra el número MENOR al cofre</h2>
+
+    <div class="numeros">
+
+        <div
+            class="numero"
+            id="7800"
+            draggable="true"
+            onclick="leerNumero('siete mil ochocientos')"
+            ondragstart="drag(event)">
+            7800
+        </div>
+
+        <div
+            class="numero"
+            id="6540"
+            draggable="true"
+            onclick="leerNumero('seis mil quinientos cuarenta')"
+            ondragstart="drag(event)">
+            6540
+        </div>
+
+    </div>
+
+    <div
+        class="zona"
+        id="zonaRespuesta"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)">
+
+        📦 MENOR
+
+    </div>
+
+    <div id="mensaje"></div>
+
+    <button
+        id="btnVerificar"
+        onclick="verificarRespuesta()">
+
+        ✅ Verificar Respuesta
+
+    </button>
+
+    <br><br>
+
+    <button
+        id="btnSiguiente"
+        onclick="window.location.href='actividad4.html'">
+
+        ➡️ Siguiente Nivel
+
+    </button>
+
+</div>
+
+<script src="js/script_actividad3.js"></script>
+
+</body>
+</html>
