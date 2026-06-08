@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Juego 4 - Tabla Posicional</title>
+
+<link rel="stylesheet" href="css/estilo_actividad5.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+
+<div class="contenedor">
+
+<h1>🎮 JUEGO 4</h1>
+
+<h3 id="puntaje">⭐ Puntaje: 0</h3>
+
+<h2>Completa la tabla posicional del número</h2>
+
+<h1>4521</h1>
+
+<div class="numeros">
+
+<div class="numero" id="4" draggable="true" ondragstart="drag(event)">4</div>
+
+<div class="numero" id="5" draggable="true" ondragstart="drag(event)">5</div>
+
+<div class="numero" id="2" draggable="true" ondragstart="drag(event)">2</div>
+
+<div class="numero" id="1" draggable="true" ondragstart="drag(event)">1</div>
+
+</div>
+
+<div class="tabla">
+
+<div>
+<p>UM</p>
+<div class="zona" id="um" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+
+<div>
+<p>C</p>
+<div class="zona" id="c" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+
+<div>
+<p>D</p>
+<div class="zona" id="d" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+
+<div>
+<p>U</p>
+<div class="zona" id="u" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+
+</div>
+
+<div id="mensaje"></div>
+
+<button id="btnVerificar" onclick="verificarRespuesta()">
+✅ Verificar Respuesta
+</button>
+
+<button id="btnSiguiente"
+onclick="window.location.href='actividad6.html'">
+➡️ Siguiente Nivel
+</button>
+
+</div>
+
+<script src="js/script_actividad5.js"></script>
+
+</body>
+</html>
