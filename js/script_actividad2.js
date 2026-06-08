@@ -88,6 +88,12 @@ function drop(ev){
         hablar("Inténtalo nuevamente");
     }
 }
+puntaje += 20;
+
+localStorage.setItem("puntaje", puntaje);
+
+document.getElementById("puntaje").innerHTML =
+"⭐ Puntaje: " + puntaje;
 
 // MENSAJE INICIAL
 
