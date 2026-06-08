@@ -3,56 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Juego 1 - Número Mayor</title>
+
 <link rel="stylesheet" href="css/estilo_actividad2.css">
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 </head>
 <body>
 
 <div class="contenedor">
 
-<h1>🎮 Juego 1</h1>
+    <h1>🎮 JUEGO 1</h1>
 
-<h2>Arrastra el número MAYOR al cofre</h2>
+    <h2>Arrastra el número MAYOR al cofre</h2>
 
-<div class="numeros">
+    <div class="numeros">
 
-<div class="numero"
-draggable="true"
-id="3250"
-ondragstart="drag(event)"
-onclick="leerNumero('tres mil doscientos cincuenta')">
-3250
+        <div
+            class="numero"
+            id="3250"
+            draggable="true"
+            onclick="leerNumero('tres mil doscientos cincuenta')"
+            ondragstart="drag(event)">
+            3250
+        </div>
+
+        <div
+            class="numero"
+            id="4521"
+            draggable="true"
+            onclick="leerNumero('cuatro mil quinientos veintiuno')"
+            ondragstart="drag(event)">
+            4521
+        </div>
+
+    </div>
+
+    <div
+        class="zona"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)">
+
+        🏆 MAYOR
+
+    </div>
+
+    <div id="mensaje"></div>
+
+    <button
+        id="btnSiguiente"
+        onclick="window.location.href='juego2.html'">
+
+        ➡️ Siguiente Nivel
+
+    </button>
+
 </div>
 
-<div class="numero"
-draggable="true"
-id="4521"
-ondragstart="drag(event)"
-onclick="leerNumero('cuatro mil quinientos veintiuno')">
-4521
-</div>
-
-</div>
-
-<div class="zona"
-ondrop="drop(event)"
-ondragover="allowDrop(event)">
-🏆 MAYOR
-</div>
-
-<div id="mensaje"></div>
-
-<br>
-
-<button id="siguiente"
-onclick="window.location.href='Actividad3.html'">
-➡️ Siguiente Nivel
-</button>
-
-</div>
 <script src="js/script_actividad2.js"></script>
-
 
 </body>
 </html>
