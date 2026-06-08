@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Juego 3 - Ordenar Números</title>
+
+<link rel="stylesheet" href="css/estilo_actividad4.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+
+<div class="contenedor">
+
+<h1>🎮 JUEGO 3</h1>
+
+<h3 id="puntaje">⭐ Puntaje: 0</h3>
+
+<h2>Arrastra los números de MENOR a MAYOR</h2>
+
+<div class="numeros">
+
+<div class="numero" id="560" draggable="true" ondragstart="drag(event)">560</div>
+
+<div class="numero" id="120" draggable="true" ondragstart="drag(event)">120</div>
+
+<div class="numero" id="890" draggable="true" ondragstart="drag(event)">890</div>
+
+<div class="numero" id="340" draggable="true" ondragstart="drag(event)">340</div>
+
+</div>
+
+<div class="zonas">
+
+<div class="zona" id="z1" ondrop="drop(event)" ondragover="allowDrop(event)">
+1°
+</div>
+
+<div class="zona" id="z2" ondrop="drop(event)" ondragover="allowDrop(event)">
+2°
+</div>
+
+<div class="zona" id="z3" ondrop="drop(event)" ondragover="allowDrop(event)">
+3°
+</div>
+
+<div class="zona" id="z4" ondrop="drop(event)" ondragover="allowDrop(event)">
+4°
+</div>
+
+</div>
+
+<div id="mensaje"></div>
+
+<button id="btnVerificar" onclick="verificarRespuesta()">
+✅ Verificar Respuesta
+</button>
+
+<button id="btnSiguiente"
+onclick="window.location.href='actividad5.html'">
+➡️ Siguiente Nivel
+</button>
+
+</div>
+
+<script src="js/script_actividad4.js"></script>
+
+</body>
+</html>
