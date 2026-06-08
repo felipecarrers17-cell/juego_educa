@@ -1,12 +1,15 @@
-body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(to bottom,#87CEEB,#E3F2FD);
-    text-align:center;
-    padding:20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-h1{
-    color:#ff5722;
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to bottom,#87CEEB,#E3F2FD);
+    text-align:center;
+    min-height:100vh;
+    padding:20px;
 }
 
 .contenedor{
@@ -14,12 +17,39 @@ h1{
     margin:auto;
 }
 
+h1{
+    color:#ff5722;
+    margin-bottom:10px;
+    animation:rebote 1.5s infinite;
+}
+
+h2{
+    color:#333;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#4CAF50;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+@keyframes rebote{
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
 .numeros{
+
     display:flex;
     justify-content:center;
     gap:40px;
-    margin-top:30px;
     flex-wrap:wrap;
+    margin-top:30px;
+
 }
 
 .numero{
@@ -41,10 +71,17 @@ h1{
     align-items:center;
 
     cursor:grab;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+
+    transition:.3s;
+
 }
 
 .numero:hover{
-    transform:scale(1.05);
+
+    transform:scale(1.08);
+
 }
 
 .zona{
@@ -52,9 +89,9 @@ h1{
     width:320px;
     height:180px;
 
-    border:4px dashed orange;
-
     margin:40px auto;
+
+    border:4px dashed #ff9800;
 
     border-radius:20px;
 
@@ -62,16 +99,51 @@ h1{
     justify-content:center;
     align-items:center;
 
-    font-size:30px;
+    font-size:32px;
+    font-weight:bold;
 
-    background:white;
+    background:#fff8e1;
+
+    color:#333;
+
 }
 
 #mensaje{
 
+    margin-top:20px;
+
     font-size:28px;
     font-weight:bold;
+
+    min-height:40px;
+
+}
+
+#btnVerificar{
+
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#2196F3;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
     margin-top:20px;
+
+    transition:.3s;
+
+}
+
+#btnVerificar:hover{
+
+    transform:scale(1.05);
 
 }
 
@@ -92,44 +164,37 @@ h1{
     font-size:20px;
 
     cursor:pointer;
-}#btnVerificar{
 
-padding:15px 30px;
+    margin-top:20px;
 
-border:none;
-
-border-radius:15px;
-
-background:#2196F3;
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-margin-top:20px;
+    transition:.3s;
 
 }
 
-#btnSiguiente{
+#btnSiguiente:hover{
 
-display:none;
+    transform:scale(1.05);
 
-padding:15px 30px;
+}
 
-border:none;
+@media(max-width:768px){
 
-border-radius:15px;
+    .numero{
 
-background:#4CAF50;
+        width:140px;
+        height:100px;
 
-color:white;
+        font-size:32px;
 
-font-size:20px;
+    }
 
-cursor:pointer;
+    .zona{
 
-margin-top:20px;
+        width:260px;
+        height:150px;
+
+        font-size:24px;
+
+    }
 
 }
