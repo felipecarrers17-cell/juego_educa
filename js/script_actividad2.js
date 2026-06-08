@@ -162,3 +162,8 @@ window.onload = function(){
     );
 
 };
+document.getElementById("nombre").innerHTML =
+localStorage.getItem("nombreUsuario");
+
+document.getElementById("avatar").src =
+localStorage.getItem("avatarUsuario");
