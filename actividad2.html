@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Juego 1 - Número Mayor</title>
-    <h3 id="puntaje">⭐ Puntaje: 0</h3>
 
 <link rel="stylesheet" href="css/estilo_actividad2.css">
 
@@ -17,6 +16,8 @@
 <div class="contenedor">
 
     <h1>🎮 JUEGO 1</h1>
+
+    <h3 id="puntaje">⭐ Puntaje: 0</h3>
 
     <h2>Arrastra el número MAYOR al cofre</h2>
 
@@ -41,25 +42,29 @@
         </div>
 
     </div>
-    <div>
-<div
-class="zona"
-id="zonaRespuesta"
-ondrop="drop(event)"
-ondragover="allowDrop(event)">
 
-🏆 MAYOR
+    <div
+        class="zona"
+        id="zonaRespuesta"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)">
 
-</div>
+        🏆 MAYOR
 
-<div id="mensaje"></div>
+    </div>
 
-<button id="btnVerificar" onclick="verificarRespuesta()">
-✅ Verificar Respuesta
-</button>
+    <div id="mensaje"></div>
 
+    <button id="btnVerificar"
+            onclick="verificarRespuesta()">
+        ✅ Verificar Respuesta
+    </button>
+
+    <br><br>
+
+    <button id="btnSiguiente"
+            onclick="window.location.href='juego2.html'">
         ➡️ Siguiente Nivel
-
     </button>
 
 </div>
