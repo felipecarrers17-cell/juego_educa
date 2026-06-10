@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,13 +12,16 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
 </head>
+
 <body>
 
 <div class="contenedor">
 
-    <h1>🎮 JUEGO 1</h1>
+<h1>🏰 REINO DE LOS NÚMEROS 🏰</h1>
 
-    <div class="perfil">
+<h2>🎮 Juego 1: Número Mayor</h2>
+
+<div class="perfil">
 
 <img id="avatar" src="" class="avatar">
 
@@ -27,53 +31,59 @@
 
 </div>
 
-    <h2>Arrastra el número MAYOR al cofre</h2>
+<h2>Arrastra el número MAYOR al cofre</h2>
 
-    <div class="numeros">
+<div class="numeros">
 
-        <div
-            class="numero"
-            id="3250"
-            draggable="true"
-            onclick="leerNumero('tres mil doscientos cincuenta')"
-            ondragstart="drag(event)">
-            3250
-        </div>
+<div
+class="numero"
+id="3250"
+draggable="true"
+onclick="leerNumero('tres mil doscientos cincuenta')"
+ondragstart="drag(event)">
+3250
+</div>
 
-        <div
-            class="numero"
-            id="4521"
-            draggable="true"
-            onclick="leerNumero('cuatro mil quinientos veintiuno')"
-            ondragstart="drag(event)">
-            4521
-        </div>
+<div
+class="numero"
+id="4521"
+draggable="true"
+onclick="leerNumero('cuatro mil quinientos veintiuno')"
+ondragstart="drag(event)">
+4521
+</div>
 
-    </div>
+</div>
 
-    <div
-        class="zona"
-        id="zonaRespuesta"
-        ondrop="drop(event)"
-        ondragover="allowDrop(event)">
+<div
+class="zona"
+id="zonaRespuesta"
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
 
-        🏆 MAYOR
+🏆 MAYOR
 
-    </div>
+</div>
 
-    <div id="mensaje"></div>
+<div id="mensaje"></div>
 
-    <button id="btnVerificar"
-            onclick="verificarRespuesta()">
-        ✅ Verificar Respuesta
-    </button>
+<button
+id="btnVerificar"
+onclick="verificarRespuesta()">
 
-    <br><br>
+✅ Verificar Respuesta
 
-    <button id="btnSiguiente"
-            onclick="window.location.href='actividad3.html'">
-        ➡️ Siguiente Nivel
-    </button>
+</button>
+
+<br><br>
+
+<button
+id="btnSiguiente"
+onclick="window.location.href='actividad3.html'">
+
+➡️ Siguiente Nivel
+
+</button>
 
 </div>
 
