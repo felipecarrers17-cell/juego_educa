@@ -18,7 +18,13 @@ function hablar(texto) {
     mensaje.lang = "es-ES";
     speechSynthesis.speak(mensaje);
 }
+console.log("Nombre guardado:", nombre);
 
+localStorage.setItem("nombreUsuario", nombre);
+
+console.log(
+localStorage.getItem("nombreUsuario")
+);
 // Ingresar
 function ingresar() {
     let nombre = document.getElementById("nombre").value;
