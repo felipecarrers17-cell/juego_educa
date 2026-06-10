@@ -1,4 +1,20 @@
 // ======================
+// DATOS ESTUDIANTE
+// ======================
+
+let nombre =
+localStorage.getItem("nombreUsuario") || "Estudiante";
+
+let avatar =
+localStorage.getItem("avatarUsuario") || "";
+
+document.getElementById("nombre").innerHTML =
+"Hola " + nombre + " 👋";
+
+document.getElementById("avatar").src =
+avatar;
+
+// ======================
 // PUNTAJE
 // ======================
 
@@ -6,8 +22,6 @@ let puntaje =
 parseInt(localStorage.getItem("puntaje")) || 0;
 
 let respuestaUsuario = "";
-
-// Mostrar puntaje
 
 document.getElementById("puntaje").innerHTML =
 "⭐ Puntaje: " + puntaje;
