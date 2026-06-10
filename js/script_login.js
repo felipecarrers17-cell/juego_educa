@@ -19,6 +19,7 @@ function hablar(texto) {
     speechSynthesis.speak(mensaje);
 }
 console.log("Nombre guardado:", nombre);
+alert(nombre);
 
 localStorage.setItem("nombreUsuario", nombre);
 
