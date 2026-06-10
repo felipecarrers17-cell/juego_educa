@@ -27,9 +27,8 @@ console.log(
 localStorage.getItem("nombreUsuario")
 );
 // Ingresar
-function ingresar() {
-    let nombre = document.getElementById("nombre").value;
-    let audio = document.getElementById("sonidoClick");
+document.getElementById("btnIngresar")
+.addEventListener("click", ingresar);
 
     if (audio) {
         audio.currentTime = 0;
