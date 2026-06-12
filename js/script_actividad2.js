@@ -78,18 +78,17 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    const numero = ev.dataTransfer.getData("text");
+
+    let numero = ev.dataTransfer.getData("text");
+
     respuestaUsuario = numero;
 
-    const zonaEl = document.getElementById("zonaRespuesta");
-    if (zonaEl) {
-        zonaEl.innerHTML = `
-            <div class="zona-contenido">
-                <img src="img/cofre.png" alt="Cofre del tesoro" class="cofre-img cofre-abierto">
-                <span class="numero-colocado">${numero}</span>
-            </div>
-        `;
-    }
+    document.getElementById("zonaRespuesta").innerHTML = `
+        <div class="zona-contenido">
+            <img src="img/cofre.png" class="cofre-img">
+            <div class="numero-colocado">${numero}</div>
+        </div>
+    `;
 }
 
 // ======================
