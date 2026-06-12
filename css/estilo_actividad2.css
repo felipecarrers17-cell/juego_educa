@@ -146,24 +146,32 @@ h2 {
     gap: 30px;
     margin-bottom: 40px;
     flex-wrap: wrap;
-}
+}.numero{
 
-.numero {
-    width: 160px;
-    height: 110px;
-    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-    border: 2px solid #3b82f6;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    font-weight: 700;
-    color: #ffffff;
-    cursor: grab;
-    user-select: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+width:180px;
+height:120px;
+
+background:white;
+
+border:3px solid #00e5ff;
+
+border-radius:20px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:48px;
+font-weight:bold;
+
+color:#007BFF;
+
+cursor:grab;
+
+box-shadow:
+0 0 20px rgba(0,229,255,.5);
+
 }
 
 .numero:hover {
