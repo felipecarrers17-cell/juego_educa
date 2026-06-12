@@ -1,89 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Juego 1 - Número Mayor</title>
-
-<link rel="stylesheet" href="css/estilo_actividad2.css">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego 1 - Número Mayor</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/estilo_actividad2.css">
+    
+    <!-- Confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
-
 <body>
 
-<div class="contenedor">
+    <div class="contenedor">
+        <h1>🏰 REINO DE LOS NÚMEROS 🏰</h1>
+        <h2>🎮 Juego 1: Número Mayor</h2>
 
-<h1>🏰 REINO DE LOS NÚMEROS 🏰</h1>
+        <!-- Perfil y Puntaje -->
+        <div class="perfil">
+            <img id="avatar" src="img/avatar1.png.avif" class="avatar" alt="Avatar">
+            <h3 id="nombre">Hola Estudiante 👋</h3>
+            <h3 id="puntaje">⭐ Puntaje: 0</h3>
+        </div>
 
-<h2>🎮 Juego 1: Número Mayor</h2>
+        <div class="instruccion-caja">
+            <h2>Arrastra el número MAYOR al cofre</h2>
+        </div>
 
-<div class="perfil">
+        <!-- Tarjetas de números -->
+        <div class="numeros">
+            <div 
+                class="numero" 
+                id="3521" 
+                draggable="true" 
+                onclick="leerNumero('tres mil quinientos veintiuno')" 
+                ondragstart="drag(event)">
+                3521
+            </div>
 
-<img id="avatar" src="" class="avatar">
+            <div 
+                class="numero" 
+                id="4521" 
+                draggable="true" 
+                onclick="leerNumero('cuatro mil quinientos veintiuno')" 
+                ondragstart="drag(event)">
+                4521
+            </div>
+        </div>
 
-<h3 id="nombre"></h3>
+        <!-- Zona de respuesta con la imagen del cofre -->
+        <div 
+            class="zona" 
+            id="zonaRespuesta" 
+            ondrop="drop(event)" 
+            ondragover="allowDrop(event)">
+            <div class="zona-contenido">
+                <img src="img/cofre.png" alt="Cofre del tesoro" class="cofre-img">
+                <span class="zona-texto">🏆 MAYOR</span>
+            </div>
+        </div>
 
-<h3 id="puntaje">⭐ Puntaje: 0</h3>
+        <div id="mensaje"></div>
 
-</div>
+        <div class="botones-container">
+            <button id="btnVerificar" onclick="verificarRespuesta()">
+                ✅ Verificar Respuesta
+            </button>
+            <button id="btnSiguiente" onclick="window.location.href='actividad3.html'">
+                ➡️ Siguiente Nivel
+            </button>
+        </div>
+    </div>
 
-<h2>Arrastra el número MAYOR al cofre</h2>
-<div class="numero" id="3250">
-    HOLA
-</div>
-draggable="true"
-onclick="leerNumero('tres mil doscientos cincuenta')"
-ondragstart="drag(event)">
-3250
-</div>
-
-<div
-class="numero"
-id="4521"
-draggable="true"
-onclick="leerNumero('cuatro mil quinientos veintiuno')"
-ondragstart="drag(event)">
-4521
-</div>
-
-</div>
-
-<div
-class="zona"
-id="zonaRespuesta"
-ondrop="drop(event)"
-ondragover="allowDrop(event)">
-
-🏆 MAYOR
-
-</div>
-
-<div id="mensaje"></div>
-
-<button
-id="btnVerificar"
-onclick="verificarRespuesta()">
-
-✅ Verificar Respuesta
-
-</button>
-
-<br><br>
-
-<button
-id="btnSiguiente"
-onclick="window.location.href='actividad3.html'">
-
-➡️ Siguiente Nivel
-
-</button>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="js/script_actividad2.js"></script>
+    <script src="js/script_actividad2.js"></script>
 </body>
 </html>
