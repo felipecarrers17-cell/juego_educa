@@ -1,255 +1,295 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ==========================================================================
+   CSS PRINCIPAL - JUEGO REINO DE LOS NÚMEROS (ACTIVIDAD 2)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(
-        135deg,
-        #0f172a,
-        #1e3a8a,
-        #06b6d4
-    );
-    min-height:100vh;
-    padding:20px;
-    text-align:center;
-    color:white;
-    position:relative;
-    overflow-x:hidden;
+body {
+    font-family: 'Outfit', 'Arial', sans-serif;
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f8fafc;
+    position: relative;
+    overflow-x: hidden;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-
-    background-image:
-    linear-gradient(
-        rgba(255,255,255,.05) 1px,
-        transparent 1px
-    ),
-    linear-gradient(
-        90deg,
-        rgba(255,255,255,.05) 1px,
-        transparent 1px
-    );
-
-    background-size:40px 40px;
-    z-index:-1;
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.contenedor{
-    max-width:1000px;
-    margin:auto;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(12px);
-
-    padding:30px;
-
-    border-radius:25px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    box-shadow:0 0 25px rgba(0,229,255,.4);
+body::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, transparent 70%);
+    top: -100px;
+    left: -100px;
+    z-index: 0;
+    pointer-events: none;
+    animation: floatGlow 15s infinite alternate ease-in-out;
 }
 
-/* TITULOS */
-
-h1{
-    font-size:45px;
-    color:#00e5ff;
-
-    text-shadow:
-    0 0 10px #00e5ff,
-    0 0 20px #00e5ff,
-    0 0 40px #00e5ff;
-
-    animation:tituloGlow 2s infinite;
+@keyframes floatGlow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(100px, 50px); }
 }
 
-@keyframes tituloGlow{
-    50%{
-        transform:scale(1.05);
-    }
+.contenedor {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 30px rgba(0, 229, 255, 0.15);
+    text-align: center;
 }
 
-h2{
-    margin-bottom:20px;
+h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
+    margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
-/* PERFIL */
-
-.perfil{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-bottom:25px;
+h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #94a3b8;
+    margin-bottom: 25px;
 }
 
-.avatar{
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-    object-fit:cover;
-
-    border:4px solid #00e5ff;
-
-    box-shadow:
-    0 0 25px rgba(0,229,255,.8);
-
-    margin-bottom:10px;
+.perfil {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 24px;
+    border-radius: 50px;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-#nombre{
-    font-size:28px;
-    color:white;
-
-    margin-bottom:10px;
-
-    text-shadow:
-    0 0 10px #00e5ff;
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
 
-#puntaje{
-    font-size:26px;
-    color:#FFD700;
-
-    text-shadow:
-    0 0 10px #FFD700;
+#nombre {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f1f5f9;
 }
 
-/* NUMEROS */
-
-.numeros{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:30px;
-    flex-wrap:wrap;
-}
-.numero{
-    width:180px;
-    height:120px;
-
-    background:#1e40af;
-
-    border:3px solid yellow;
-
-    border-radius:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:50px;
-    font-weight:bold;
-
-    color:white !important;
-
-    text-shadow:
-    2px 2px 4px black;
-
-    cursor:pointer;
+#puntaje {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fbbf24;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 15px;
 }
 
-.numero:hover{
-    transform:scale(1.08);
-
-    box-shadow:
-    0 0 25px #00e5ff;
+.instruccion-caja {
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    padding: 12px 20px;
+    border-radius: 16px;
+    margin-bottom: 35px;
 }
 
-/* ZONA DE RESPUESTA */
-
-.zona{
-    width:320px;
-    height:180px;
-
-    margin:40px auto;
-
-    border:4px dashed #00e5ff;
-
-    border-radius:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:32px;
-    font-weight:bold;
-
-    color:white;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(10px);
+.instruccion-caja h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin: 0;
 }
 
-/* MENSAJES */
-
-#mensaje{
-    margin:20px;
-    font-size:26px;
-    font-weight:bold;
-    min-height:40px;
+.numeros {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-/* BOTONES */
+.numero {
+    width: 160px;
+    height: 110px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    border: 2px solid #3b82f6;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.numero:hover {
+    transform: translateY(-8px);
+    border-color: #00f2fe;
+    box-shadow: 
+        0 15px 30px rgba(0, 242, 254, 0.25),
+        0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+/* Zona del cofre */
+.zona {
+    width: 300px;
+    height: 180px;
+    margin: 0 auto 35px auto;
+    border: 3px dashed #3b82f6;
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.zona:hover {
+    border-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.03);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+}
+
+.zona-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.cofre-img {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+    transition: transform 0.3s ease;
+    animation: floatingChest 3s infinite ease-in-out;
+}
+
+@keyframes floatingChest {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.zona:hover .cofre-img {
+    transform: scale(1.05);
+}
+
+.cofre-abierto {
+    animation: openChestAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes openChestAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2) rotate(-3deg); }
+    100% { transform: scale(1.05); }
+}
+
+.zona-texto {
+    font-size: 15px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+#mensaje {
+    margin: 25px auto;
+    font-size: 18px;
+    font-weight: 600;
+    min-height: 28px;
+}
+
+.botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
 #btnVerificar,
-#btnSiguiente{
-    padding:15px 30px;
-
-    border:none;
-
-    border-radius:15px;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    margin:10px;
-
-    color:white;
+#btnSiguiente {
+    padding: 16px 36px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-#btnVerificar{
-    background:linear-gradient(
-        to right,
-        #00e5ff,
-        #007BFF
-    );
+#btnVerificar {
+    background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+    color: #ffffff;
 }
 
-#btnSiguiente{
-    display:none;
-
-    background:linear-gradient(
-        to right,
-        #22c55e,
-        #16a34a
-    );
+#btnVerificar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 180, 219, 0.35);
 }
 
-#btnVerificar:hover,
-#btnSiguiente:hover{
-    transform:scale(1.08);
-}
-.numero *{
-    color:white !important;
+#btnSiguiente {
+    display: none;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: #ffffff;
 }
 
-.numero{
-    opacity:1 !important;
-    visibility:visible !important;
+#btnSiguiente:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(56, 239, 125, 0.35);
+}
+
+.numero-colocado {
+    font-size: 28px;
+    font-weight: 800;
+    color: #00f2fe;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 20px;
+    border-radius: 12px;
+    border: 1px dashed #00f2fe;
 }
