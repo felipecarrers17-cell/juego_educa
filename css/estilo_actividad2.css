@@ -180,17 +180,23 @@ h2 {
 }
 
 /* Zona de respuesta (Cofre) */
-.zona {
-    width: 280px;
-    height: 140px;
-    margin: 0 auto 35px auto;
-    border: 3px dashed #3b82f6;
-    border-radius: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.3s ease;
+.zona{
+    width:280px;
+    height:140px;
+    margin:auto;
+    border:3px dashed #3b82f6;
+    border-radius:24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.cofre-img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    pointer-events:none;
 }
 
 .zona:hover {
@@ -211,12 +217,6 @@ h2 {
 }
 /* Imagen del cofre */
 
-.cofre-img{
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    display: block;
-}
 
 @keyframes pulseIcon {
     0%, 100% { transform: scale(1); }
