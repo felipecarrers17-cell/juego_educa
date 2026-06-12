@@ -245,3 +245,11 @@ h2{
 #btnSiguiente:hover{
     transform:scale(1.08);
 }
+.numero *{
+    color:white !important;
+}
+
+.numero{
+    opacity:1 !important;
+    visibility:visible !important;
+}
