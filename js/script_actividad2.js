@@ -1,20 +1,40 @@
 // ======================
-// DATOS DEL ESTUDIANTE
+// ======================
+// CARGAR DATOS USUARIO
 // ======================
 
-const nombreUsuario = localStorage.getItem("nombreUsuario") || "Estudiante";
-const avatarUsuario = localStorage.getItem("avatarUsuario") || "img/avatar1.png.avif";
+window.onload = function(){
 
-const nombreEl = document.getElementById("nombre");
-if (nombreEl) {
-    nombreEl.textContent = "Hola " + nombreUsuario + " 👋";
-}
+    let nombre =
+    localStorage.getItem("nombreUsuario") || "Estudiante";
 
-const avatarEl = document.getElementById("avatar");
-if (avatarEl) {
-    avatarEl.src = avatarUsuario;
-}
+    let avatar =
+    localStorage.getItem("avatarUsuario") || "";
 
+    document.getElementById("nombre").innerHTML =
+    "Hola " + nombre + " 👋";
+
+    if(avatar !== ""){
+        document.getElementById("avatar").src = avatar;
+    }
+
+    document.body.addEventListener(
+        "click",
+        function iniciarAudio(){
+
+            hablar(
+            "Arrastra el número mayor al cofre y luego presiona verificar respuesta"
+            );
+
+            document.body.removeEventListener(
+                "click",
+                iniciarAudio
+            );
+
+        }
+    );
+
+};
 // ======================
 // PUNTAJE
 // ======================
