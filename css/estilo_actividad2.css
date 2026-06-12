@@ -317,3 +317,16 @@ to right,
 transform:scale(1.08);
 
 }
+body{
+    background:red !important;
+}
+
+.numero{
+    background:green !important;
+    color:white !important;
+}
+
+.zona{
+    background:yellow !important;
+    color:black !important;
+}
