@@ -21,6 +21,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Efecto de rejilla de fondo */
 body::before {
     content: "";
     position: fixed;
@@ -36,6 +37,7 @@ body::before {
     pointer-events: none;
 }
 
+/* Brillo en el fondo */
 body::after {
     content: "";
     position: fixed;
@@ -54,6 +56,7 @@ body::after {
     100% { transform: translate(100px, 50px); }
 }
 
+/* Caja de Cristal (Glassmorphism) */
 .contenedor {
     position: relative;
     z-index: 10;
@@ -91,6 +94,7 @@ h2 {
     margin-bottom: 25px;
 }
 
+/* Perfil de Usuario */
 .perfil {
     display: inline-flex;
     align-items: center;
@@ -146,32 +150,25 @@ h2 {
     gap: 30px;
     margin-bottom: 40px;
     flex-wrap: wrap;
-}.numero{
+}
 
-width:180px;
-height:120px;
-
-background:white;
-
-border:3px solid #00e5ff;
-
-border-radius:20px;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:48px;
-font-weight:bold;
-
-color:#007BFF;
-
-cursor:grab;
-
-box-shadow:
-0 0 20px rgba(0,229,255,.5);
-
+/* Tarjeta interactiva del número */
+.numero {
+    width: 160px;
+    height: 110px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    border: 2px solid #3b82f6;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .numero:hover {
@@ -182,36 +179,23 @@ box-shadow:
         0 0 15px rgba(0, 242, 254, 0.2);
 }
 
-/* Zona del cofre */
-.zona{
-
-width:320px;
-height:180px;
-
-margin:40px auto;
-
-border:4px dashed #00e5ff;
-
-border-radius:20px;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:36px;
-font-weight:bold;
-
-color:#007BFF;
-
-background:white;
-
+/* Zona de respuesta (Cofre) */
+.zona {
+    width: 280px;
+    height: 140px;
+    margin: 0 auto 35px auto;
+    border: 3px dashed #3b82f6;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
 }
 
 .zona:hover {
     border-color: #00f2fe;
     background: rgba(0, 242, 254, 0.03);
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
 }
 
 .zona-contenido {
@@ -219,41 +203,22 @@ background:white;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    pointer-events: none;
 }
 
-.cofre-img {
-    width: 90px;
-    height: auto;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
-    transition: transform 0.3s ease;
-    animation: floatingChest 3s infinite ease-in-out;
+.cofre-icono {
+    font-size: 40px;
+    animation: pulseIcon 2s infinite ease-in-out;
 }
 
-@keyframes floatingChest {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.zona:hover .cofre-img {
-    transform: scale(1.05);
-}
-
-.cofre-abierto {
-    animation: openChestAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
-}
-
-@keyframes openChestAnimation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2) rotate(-3deg); }
-    100% { transform: scale(1.05); }
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .zona-texto {
     font-size: 15px;
     font-weight: 600;
     color: #94a3b8;
-    letter-spacing: 0.5px;
 }
 
 #mensaje {
@@ -263,6 +228,7 @@ background:white;
     min-height: 28px;
 }
 
+/* Botones */
 .botones-container {
     display: flex;
     justify-content: center;
@@ -311,12 +277,4 @@ background:white;
     padding: 8px 20px;
     border-radius: 12px;
     border: 1px dashed #00f2fe;
-}
-h2{
-color:white;
-}
-
-.numero,
-.zona{
-text-shadow:none;
 }
