@@ -1,18 +1,18 @@
 // ======================
-// DATOS ESTUDIANTE
+// DATOS DEL ESTUDIANTE
 // ======================
 
-let nombre =
+const nombreUsuario =
 localStorage.getItem("nombreUsuario") || "Estudiante";
 
-let avatar =
-localStorage.getItem("avatarUsuario") || "";
+const avatarUsuario =
+localStorage.getItem("avatarUsuario") || "img/avatar1.png";
 
-document.getElementById("nombre").innerHTML =
-"Hola " + nombre + " 👋";
+document.getElementById("nombre").textContent =
+"Hola " + nombreUsuario + " 👋";
 
 document.getElementById("avatar").src =
-avatar;
+avatarUsuario;
 
 // ======================
 // PUNTAJE
@@ -21,10 +21,10 @@ avatar;
 let puntaje =
 parseInt(localStorage.getItem("puntaje")) || 0;
 
-let respuestaUsuario = "";
-
-document.getElementById("puntaje").innerHTML =
+document.getElementById("puntaje").textContent =
 "⭐ Puntaje: " + puntaje;
+
+let respuestaUsuario = "";
 
 // ======================
 // AUDIO
@@ -34,7 +34,7 @@ function hablar(texto){
 
     speechSynthesis.cancel();
 
-    let voz =
+    const voz =
     new SpeechSynthesisUtterance(texto);
 
     voz.lang = "es-ES";
@@ -43,7 +43,7 @@ function hablar(texto){
 }
 
 // ======================
-// LEER NÚMEROS
+// LEER NÚMERO
 // ======================
 
 function leerNumero(numero){
@@ -75,14 +75,13 @@ function drop(ev){
 
     ev.preventDefault();
 
-    let numero =
+    const numero =
     ev.dataTransfer.getData("text");
 
     respuestaUsuario = numero;
 
     document.getElementById("zonaRespuesta")
-    .innerHTML =
-    "🏆 " + numero;
+    .innerHTML = "🏆 " + numero;
 
 }
 
@@ -92,16 +91,20 @@ function drop(ev){
 
 function verificarRespuesta(){
 
+    const mensaje =
+    document.getElementById("mensaje");
+
     if(respuestaUsuario === ""){
 
-        hablar("Debes arrastrar un número");
-
-        document.getElementById("mensaje")
-        .innerHTML =
+        mensaje.textContent =
         "⚠️ Primero arrastra un número.";
 
-        document.getElementById("mensaje")
-        .style.color = "orange";
+        mensaje.style.color =
+        "orange";
+
+        hablar(
+        "Debes arrastrar un número"
+        );
 
         return;
 
@@ -117,37 +120,41 @@ function verificarRespuesta(){
         );
 
         document.getElementById("puntaje")
-        .innerHTML =
+        .textContent =
         "⭐ Puntaje: " + puntaje;
 
-        document.getElementById("mensaje")
-        .innerHTML =
+        mensaje.textContent =
         "🎉 ¡Correcto! Encontraste el número mayor.";
 
-        document.getElementById("mensaje")
-        .style.color = "green";
+        mensaje.style.color =
+        "#22c55e";
 
-        hablar("Muy bien");
+        hablar(
+        "Muy bien. Has encontrado el número mayor"
+        );
 
         confetti({
-            particleCount:200,
-            spread:120
+            particleCount: 200,
+            spread: 120,
+            origin: { y: 0.6 }
         });
 
-        document.getElementById("btnSiguiente")
-        .style.display =
+        document.getElementById(
+        "btnSiguiente"
+        ).style.display =
         "inline-block";
 
     }else{
 
-        document.getElementById("mensaje")
-        .innerHTML =
+        mensaje.textContent =
         "❌ Incorrecto. Inténtalo nuevamente.";
 
-        document.getElementById("mensaje")
-        .style.color = "red";
+        mensaje.style.color =
+        "#ef4444";
 
-        hablar("Inténtalo nuevamente");
+        hablar(
+        "Inténtalo nuevamente"
+        );
 
     }
 
@@ -159,25 +166,12 @@ function verificarRespuesta(){
 
 window.onload = function(){
 
-    document.body.addEventListener(
-        "click",
-        function iniciarAudio(){
+    setTimeout(() => {
 
-            hablar(
-            "Arrastra el número mayor al cofre y luego presiona verificar respuesta"
-            );
+        hablar(
+        "Arrastra el número mayor al cofre y luego presiona verificar respuesta"
+        );
 
-            document.body.removeEventListener(
-                "click",
-                iniciarAudio
-            );
-
-        }
-    );
+    }, 1000);
 
 };
-document.getElementById("nombre").innerHTML =
-localStorage.getItem("nombreUsuario");
-
-document.getElementById("avatar").src =
-localStorage.getItem("avatarUsuario");
