@@ -305,3 +305,13 @@ h2 {
     max-width:80px !important;
     max-height:80px !important;
 }
+.cofre-img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    pointer-events:none;
+}
+
+.zona-contenido{
+    pointer-events:none;
+}
